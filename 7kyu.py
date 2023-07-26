@@ -871,15 +871,14 @@ All values in the given list are integers.
 Все значения в данном списке являются целыми числами.
 '''
 
-
 # def traffic_count(array):
 
-    # t = []
-    # for i in range(4, 8):
-    #     x = array[0:6]
-    #     del array[0:6]
-    #     t.append((f'{i}:00pm', max(x)))
-    # return t
+# t = []
+# for i in range(4, 8):
+#     x = array[0:6]
+#     del array[0:6]
+#     t.append((f'{i}:00pm', max(x)))
+# return t
 
 
 '''Варианты решения:
@@ -887,7 +886,6 @@ All values in the given list are integers.
             ('7:00pm', max(array[18:]))]
 2) return [('{}:00pm'.format(i + 4), max(array[i * 6:(i + 1) * 6])) for i in range(4)]
 '''
-
 
 # @test.describe("traffic_count")
 # def traffic_count():
@@ -900,3 +898,50 @@ All values in the given list are integers.
 #         a2 = [22, 31, 70, 22, 49, 62, 38, 26, 44, 43, 67, 30, 76, 77, 18, 47, 42, 57, 30, 38, 87, 94, 7, 18]
 #         r2 = [('4:00pm', 70), ('5:00pm', 67), ('6:00pm', 77), ('7:00pm', 94)]
 #         test.assert_equals(traffic_count(a2), r2)
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+#  Battle of the characters (Easy)
+# =========================================================================================================================
+
+'''Описание:
+Группы персонажей решили устроить битву. Помогите им выяснить, какая группа более могущественна. 
+Создайте функцию, которая будет принимать 2 строки и возвращать ту, которая сильнее.
+
+Правила:
+Каждый персонаж обладает своей собственной силой: A = 1, B = 2, ... Y = 25, Z = 26
+Строки будут состоять только из заглавных букв
+Только две группы вступили в бой.
+Выигрывает группа, чья суммарная мощность (A + B + C + ...) больше.
+Если силы равны, то это ничья.
+Примеры:
+      * "ОДИН", "ДВА" -> "ДВА"`
+      * "ОДИН", "НЕО" -> "Ничья!"
+A = 65, Z = 90
+'''
+
+
+# def battle(x, y):
+
+
+# Let the battle begin!
+# if sum(map(lambda num: ord(num)-64, x)) == sum(map(lambda num: ord(num)-64, y)):
+#     return "Tie!"
+# elif sum(map(lambda num: ord(num)-64, x)) > sum(map(lambda num: ord(num)-64, y)):
+#     return x
+# return y
+'''Вариани решения:
+an = lambda word: sum(ord(i) - 64 for i in word)
+    return x if an(x) > an(y) else y if an(y) > an(x) else 'Tie!'
+'''
+
+
+# @test.describe("Tests")
+# def tests():
+#     @test.it("Basic tests")
+#     def basic_tests():
+#         test.assert_equals(battle("AAA", "Z"), "Z", "Unfair fight!")
+#         test.assert_equals(battle("ONE", "TWO"), "TWO", "Unfair fight!")
+#         test.assert_equals(battle("ONE", "NEO"), "Tie!", "Unfair fight!")
+#         test.assert_equals(battle("FOUR", "FIVE"), "FOUR", "Unfair fight!")
