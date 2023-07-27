@@ -468,7 +468,7 @@ X, Y и Z строго положительны и могут достигать
 '''
 
 # def f(a, b, c):
-#     # TODO: Your code here
+#     #  Your code here
 #     return 3 * (a * b * c) + 2 * (a * b + b * c + a * c) + a + b + c
 
 
@@ -921,7 +921,6 @@ All values in the given list are integers.
 A = 65, Z = 90
 '''
 
-
 # def battle(x, y):
 
 
@@ -936,7 +935,6 @@ an = lambda word: sum(ord(i) - 64 for i in word)
     return x if an(x) > an(y) else y if an(y) > an(x) else 'Tie!'
 '''
 
-
 # @test.describe("Tests")
 # def tests():
 #     @test.it("Basic tests")
@@ -945,3 +943,103 @@ an = lambda word: sum(ord(i) - 64 for i in word)
 #         test.assert_equals(battle("ONE", "TWO"), "TWO", "Unfair fight!")
 #         test.assert_equals(battle("ONE", "NEO"), "Tie!", "Unfair fight!")
 #         test.assert_equals(battle("FOUR", "FIVE"), "FOUR", "Unfair fight!")
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Find the capitals
+# =========================================================================================================================
+
+'''Напишите функцию, которая принимает в качестве аргумента одну строку (слово). 
+Функция должна возвращать упорядоченный список, содержащий индексы всех заглавных букв в строке.
+
+Пример
+Test.assertSimilar( заглавные буквы('CodEWaRs'), [0,3,4,6] );
+'''
+
+# def capitals(word):
+# your code here
+# return [i for i in range(len(word)) if word[i].isupper()]
+'''Варианты решения:
+return [i for (i, c) in enumerate(word) if c.isupper()]
+'''
+
+# @test.describe("Fixed Tests")
+# def fixed_tests():
+#     @test.it('Basic Test Cases')
+#     def basic_test_cases():
+#         test.assert_equals(capitals('CodEWaRs'), [0, 3, 4, 6])
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Find the divisors!
+# =========================================================================================================================
+
+'''создайте функцию с именем divisors/Делители, которая принимает целое число n > 1 
+и возвращает массив со всеми делителями целого числа (за исключением 1 и самого числа), 
+от наименьшего до наибольшего. Если число простое, верните строку
+ '(integer) is prime' (null в C#, пустая таблица в COBOL) 
+ (используйте либо строку a в Haskell, либо результат<Vec<u32>, String> в Rust).
+
+Пример:
+делители(12); #должно возвращать [2,3,4,6]
+делители(25); #должно возвращать [5]
+делители(13); #должно возвращать "13 - простое число"'''
+
+# def divisors(integer):
+#     c = []
+#     for i in range(2, integer):
+#         if integer % i == 0:
+#             c.append(i)
+#     if len(c) == 0:
+#         c = f"{integer} is prime"
+#     return c
+
+'''Варианты решения:
+  l = [a for a in range(2, integer) if integer % a == 0]
+    if len(l) == 0:
+        return str(integer) + " is prime"
+    return l
+
+'''
+
+# @test.describe("Fixed Tests")
+# def basic_tests():
+#     @test.it('Basic Test Cases')
+#     def basic_test_cases():
+#         test.assert_equals(divisors(15), [3, 5])
+#         test.assert_equals(divisors(253), [11, 23])
+#         test.assert_equals(divisors(24), [2, 3, 4, 6, 8, 12])
+#         test.assert_equals(divisors(25), [5])
+#         test.assert_equals(divisors(13), "13 is prime")
+#         test.assert_equals(divisors(3), "3 is prime")
+#         test.assert_equals(divisors(29), "29 is prime")
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Find the divisors!
+# =========================================================================================================================
+'''Ваша задача состоит в том, чтобы написать функцию, которая принимает число в качестве аргумента и 
+возвращает некоторое число. Но в чем проблема? Вам нужно угадать, какое число должно быть возвращено. 
+Смотрите пример тестового примера. Удачи. Подсказка: Вам следует быть немного осторожнее при подсчете...'''
+
+
+def secret_number(n):
+    return bin(n).count(str(n % 2)) ** 2
+
+
+print(secret_number(10))
+# @test.describe("Fixed Tests")
+# def fixed_tests():
+#     @test.it("Example Tests")
+#     def example_tests():
+#         test.assert_equals(secret_number(2), 4)
+#         test.assert_equals(secret_number(5), 4)
+#         test.assert_equals(secret_number(10), 9)
+#         test.assert_equals(secret_number(15), 16)
+#         test.assert_equals(secret_number(31), 25)
+#         test.assert_equals(secret_number(9978), 36)
+#         test.assert_equals(secret_number(1234567), 121)
+#         test.assert_equals(secret_number(14556237892), 400)
