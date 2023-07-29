@@ -769,7 +769,7 @@ derive(5, 9) --> this should output "45x^8"
 Не беспокойтесь о числах, специальных символах или нестроковых типах, передаваемых в функцию.
  Длина строки будет составлять от 1 символа до 10 символов, но никогда не будет пустой.
 """
-import codewars_test as test
+# import codewars_test as test
 
 # def capitalize_word(word):
 #     return word.capitalize()
@@ -1045,3 +1045,46 @@ import codewars_test as test
 #     @test.it('String length should grow' + f', actual length: {orig_len} ⇒ {up_down_len}' * (up_down_len > orig_len))
 #     def _():
 #         test.expect(up_down_len > orig_len, f'No grow, actual length: {orig_len} ⇒ {up_down_len}')
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Total pressure calculation
+# =========================================================================================================================
+
+'''Учитывая молекулярную массу двух молекул M1 и M2 их массы присутствуют m1 и m2 в сосуде большого объема V
+при определенной температур T, найдите общее давление P_total воздействует на молекулы. 
+Формула для расчета давления такова:
+P_total = ((m1/M1+m2/M2)*RT)/V
+
+входные данные:
+Шесть значений :
+* M1, M2 молярные массы обоих газов в г*мол^-1
+* m1, m2 текущая масса обоих газов в граммах(г)
+* V объем сосуда, в дм^3
+* T температура в Ц
+
+Выходные данные:
+одно значение P_total в атм.
+
+Примечание:
+Помните: температура указана в градусах Цельсия, в то время как единицей СИ является Кельвин
+0°C=273,15К
+Газовая постоянная R = 0.082дм^3*атм*К^-1*моль^-1
+
+'''
+import codewars_test as test
+
+
+def solution(molar_mass1, molar_mass2, given_mass1, given_mass2, volume, temp):
+    # your code goes here
+    return round(((given_mass1 / molar_mass1 + given_mass2 / molar_mass2) * 0.082 * (temp + 273.15)) / volume, 17)
+
+
+
+@test.describe("Total pressure calculation")
+def total_pressure_calculation():
+    @test.it("Sample tests")
+    def sample_tests():
+        test.assert_approx_equals(solution(44, 30, 3, 2, 5, 50), 0.7146511212121212)
+        test.assert_approx_equals(solution(60, 20, 10, 30, 10, 100), 5.099716666666667)
