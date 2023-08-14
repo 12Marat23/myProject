@@ -1,4 +1,4 @@
-import codewars_test as test
+# import codewars_test as test
 
 # =========================================================================================================================
 
@@ -1025,12 +1025,11 @@ return [i for (i, c) in enumerate(word) if c.isupper()]
 возвращает некоторое число. Но в чем проблема? Вам нужно угадать, какое число должно быть возвращено. 
 Смотрите пример тестового примера. Удачи. Подсказка: Вам следует быть немного осторожнее при подсчете...'''
 
+# def secret_number(n):
+#     return bin(n).count(str(n % 2)) ** 2
 
-def secret_number(n):
-    return bin(n).count(str(n % 2)) ** 2
 
-
-print(secret_number(10))
+# print(secret_number(10))
 # @test.describe("Fixed Tests")
 # def fixed_tests():
 #     @test.it("Example Tests")
@@ -1043,3 +1042,115 @@ print(secret_number(10))
 #         test.assert_equals(secret_number(9978), 36)
 #         test.assert_equals(secret_number(1234567), 121)
 #         test.assert_equals(secret_number(14556237892), 400)
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Fizz / Buzz
+# =========================================================================================================================
+'''Напишите функцию, которая принимает целое число и возвращает массив [A, B, C], 
+где A - число, кратное 3 (но не 5) ниже заданного целого, 
+B - число, кратное 5 (но не 3) ниже заданного целого, 
+а C - число кратных 3 и 5 ниже заданного целого числа.
+
+Например, решение(20) должно возвращать [5, 2, 1]'''
+
+# import codewars_test as test
+
+
+# def solution(number):
+#     A = (number - 1) // 3
+#     B = (number - 1) // 5
+#     C = (number - 1) // 15
+#     return [A - C, B - C, C]
+
+
+# @test.describe("Fixed Tests")
+# def fixed_tests():
+#     @test.it('Basic Test Cases')
+#     def basic_test_cases():
+#         test.assert_equals(solution(20), [5, 2, 1])
+#         test.assert_equals(solution(2), [0, 0, 0])
+#         test.assert_equals(solution(14), [4, 2, 0])
+#         test.assert_equals(solution(30), [8, 4, 1])
+#         test.assert_equals(solution(141), [37, 19, 9])
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Fizz / Buzz
+# =========================================================================================================================
+
+'''Массив размером N x M представляет собой пиксели изображения. 
+Каждая ячейка этого массива содержит массив размером 3 с информацией о цвете пикселя: [R,G,B]
+
+Преобразуйте цветное изображение в среднее изображение в оттенках серого.
+Массив [R,G,B] содержит целые числа от 0 до 255 для каждого цвета.
+Чтобы преобразовать цветной пиксель в пиксель в оттенках серого, усредните значения этого пикселя:
+
+p = [R,G,B] => [(R+G+B)/3, (R+G+B)/3, (R+G+B)/3]
+Примечание: значения для пикселя должны быть целыми числами, поэтому вы должны округлить значения с плавающей 
+точкой до ближайшего целого числа.
+
+Пример
+Вот пример изображения размером 2х2:
+
+[
+ [ [123, 231, 12], [56, 43, 124] ],
+ [ [78, 152, 76], [64, 132, 200] ]
+]
+
+Вот ожидаемое изображение после преобразования:
+[
+ [ [122, 122, 122], [74, 74, 74] ],
+ [ [102, 102, 102], [132, 132, 132] ]
+]
+'''
+
+
+def color_2_grey(image):
+    return [[[int(round(sum(rgb) / 3))] * 3 for rgb in row] for row in image]
+
+
+
+print(color_2_grey(
+    [[[123, 231, 12], [56, 43, 124]], [[78, 152, 76], [64, 132, 200]]],
+))
+
+import codewars_test as test
+from copy import deepcopy
+
+# @test.describe("Sample Tests")
+# def sample_tests():
+#     def run_test(input_, expected):
+#         actual = color_2_grey(deepcopy(input_))
+#         test.expect(isinstance(actual, list), f'Output should be a 3D list: expected {actual} to be a list',
+#                     allow_raise=True)
+#         test.assert_equals(len(actual), len(expected), f'Output should have the same dimensions as the input',
+#                            allow_raise=True)
+#         for r in range(len(input_)):
+#             test.expect(isinstance(actual[r], list), f'Output should be a 3D list: expected {actual[r]} to be a list',
+#                         allow_raise=True)
+#             test.assert_equals(len(actual), len(expected), f'Output should have the same dimensions as the input',
+#                                allow_raise=True)
+#             for c in range(len(input_[r])):
+#                 test.expect(isinstance(actual[r][c], list),
+#                             f'Output should be a 3D list: expected {actual[r][c]} to be a list', allow_raise=True)
+#                 test.assert_equals(actual[r][c], expected[r][c], f'Input pixel: {input_[r][c]}\nOutput pixel',
+#                                    allow_raise=False)
+#
+#     @test.it("Basic Tests")
+#     def basic_tests():
+#         tests = [
+#             (
+#                 [[[123, 231, 12], [56, 43, 124]], [[78, 152, 76], [64, 132, 200]]],
+#                 [[[122, 122, 122], [74, 74, 74]], [[102, 102, 102], [132, 132, 132]]],
+#             ),
+#             (
+#                 [[[88, 110, 23]], [[93, 53, 35]], [[59, 65, 5]], [[184, 194, 2]]],
+#                 [[[74, 74, 74]], [[60, 60, 60]], [[43, 43, 43]], [[127, 127, 127]]],
+#             ),
+#         ]
+#
+#         for input_, expected in tests:
+#             run_test(input_, expected)
