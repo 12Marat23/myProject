@@ -1073,18 +1073,52 @@ P_total = ((m1/M1+m2/M2)*RT)/V
 Газовая постоянная R = 0.082дм^3*атм*К^-1*моль^-1
 
 '''
+# import codewars_test as test
+
+
+# def solution(molar_mass1, molar_mass2, given_mass1, given_mass2, volume, temp):
+#     # your code goes here
+#     return round(((given_mass1 / molar_mass1 + given_mass2 / molar_mass2) * 0.082 * (temp + 273.15)) / volume, 17)
+
+
+
+# @test.describe("Total pressure calculation")
+# def total_pressure_calculation():
+#     @test.it("Sample tests")
+#     def sample_tests():
+#         test.assert_approx_equals(solution(44, 30, 3, 2, 5, 50), 0.7146511212121212)
+#         test.assert_approx_equals(solution(60, 20, 10, 30, 10, 100), 5.099716666666667)
+
+# =========================================================================================================================
+
+# ==========================================================================================================================
+# Total pressure calculation
+# =========================================================================================================================
+'''Создайте метод, который принимает в качестве входных данных имя, город и штат, чтобы поприветствовать человека. 
+Обратите внимание, что name будет представлять собой массив, 
+состоящий из одного или нескольких значений, которые должны быть объединены с одним пробелом между каждым, 
+и длина массива name в тестовых примерах будет варьироваться.
+
+['Джон', 'Смит'], 'Феникс', 'Аризона'
+В этом примере будет возвращена строка 
+
+Hello, John Smith! Добро пожаловать в Финикс, штат Аризона!
+'''
+
 import codewars_test as test
 
+def say_hello(name, city, state):
+    #your code here
+    return f"Hello, {' '.join(name)}! Welcome to {city}, {state}!"
 
-def solution(molar_mass1, molar_mass2, given_mass1, given_mass2, volume, temp):
-    # your code goes here
-    return round(((given_mass1 / molar_mass1 + given_mass2 / molar_mass2) * 0.082 * (temp + 273.15)) / volume, 17)
+# print(say_hello(['Franklin', 'Delano', 'Roosevelt'], 'Chicago', 'Illinois'))
 
-
-
-@test.describe("Total pressure calculation")
-def total_pressure_calculation():
-    @test.it("Sample tests")
-    def sample_tests():
-        test.assert_approx_equals(solution(44, 30, 3, 2, 5, 50), 0.7146511212121212)
-        test.assert_approx_equals(solution(60, 20, 10, 30, 10, 100), 5.099716666666667)
+@test.describe("Fixed Tests")
+def fixed_tests():
+    @test.it('Basic Test Cases')
+    def basic_test_cases():
+        test.assert_equals(say_hello(['John', 'Smith'], 'Phoenix', 'Arizona'), 'Hello, John Smith! Welcome to Phoenix, Arizona!')
+        test.assert_equals(say_hello(['Franklin','Delano','Roosevelt'], 'Chicago', 'Illinois'), 'Hello, Franklin Delano Roosevelt! Welcome to Chicago, Illinois!')
+        test.assert_equals(say_hello(['Wallace','Russel','Osbourne'],'Albany','New York'), 'Hello, Wallace Russel Osbourne! Welcome to Albany, New York!')
+        test.assert_equals(say_hello(['Lupin','the','Third'],'Los Angeles','California'), 'Hello, Lupin the Third! Welcome to Los Angeles, California!')
+        test.assert_equals(say_hello(['Marlo','Stanfield'],'Baltimore','Maryland'), 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!')
