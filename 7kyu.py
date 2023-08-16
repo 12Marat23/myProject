@@ -1151,7 +1151,8 @@ Examples
 
 
 def solve(arr):
-    pass
+    return sum(set(arr))
+
 
 
 sample_test_cases = [
@@ -1161,6 +1162,7 @@ sample_test_cases = [
     ([-9, -105, -9, -9, -9, -9, 105], -9),
     ([-110, 110, -38, -38, -62, 62, -38, -38, -38], -38),
 ]
+
 
 
 @test.describe('Sample tests')
